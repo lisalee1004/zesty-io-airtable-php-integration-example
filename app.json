@@ -16,6 +16,21 @@
         "MAX_FILE_SIZE": {
             "description": "Max file size to allow (in MB)",
             "value": "15"
+        },
+        "AIRTABLE_TABLE_ID": {
+            "description": "Air Table ID",
+            "value": ""
+        },
+		"AIRTABLE_API_KEY": {
+            "description": "Air Table API",
+            "value": ""
+        },
+		"DOMAIN_NAME": {
+            "description": "The domain where the files will be stores. Could be your Heroku address. example: https://www.zesty.io",
+            "value": ""
         }
+        
+        
+        
     }
 }

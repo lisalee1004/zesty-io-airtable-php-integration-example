@@ -14,9 +14,9 @@ if (file_exists('../.env')) {
 
 // variables
 
-$air_table_id = "apprqpanHECFPzeSf";
-$air_table_key 	= "keyozPRyAmFa2Vo2E";
-$download_domain 	= "https://www.test.com";
+$air_table_id = getenv('AIRTABLE_TABLE_ID'); 
+$air_table_key 	= getenv('AIRTABLE_API_KEY'); 
+$download_domain 	= getenv('DOMAIN_NAME');
 
 
 if (empty($_FILES)) {
