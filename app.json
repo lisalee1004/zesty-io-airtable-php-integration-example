@@ -1,5 +1,5 @@
 {
-    "name": "Zesty.io PHP Airtable Integration",
+    "name": "Zesty.io PHP Airtable",
     "description": "An example repo for posting a file payload from Zesty.io to a PHP endpoint then to Airtable",
     "repository": "https://github.com/ardeay/zesty-io-airtable-php-integration-example",
     "logo": "https://834e53c6fd9d83efad1a-e596cb4b78daac33febfecb74c502126.ssl.cf2.rackcdn.com/or-zesty-io-outbound-webhook.png",
