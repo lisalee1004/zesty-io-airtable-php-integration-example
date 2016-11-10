@@ -19,7 +19,7 @@ By using php on a heroku server, Zesty.io can post a form with a file payload to
 	
 	
 	<!-- Name of input element determines name in $_FILES array -->
-	<label>Send this file: <input name="userfile" type="file" /></label>
+	<label>Send this file: <input name="resume" type="file" /></label>
 	<br>
 	<input type="submit" value="Send File" />
 </form>		
