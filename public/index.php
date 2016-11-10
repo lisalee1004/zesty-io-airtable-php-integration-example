@@ -11,15 +11,10 @@ if (file_exists('../.env')) {
     $dotenv->load();
 }
 
-
 // variables
 $air_table_id = getenv('AIRTABLE_TABLE_ID'); 
 $air_table_key 	= getenv('AIRTABLE_API_KEY'); 
 $download_domain 	= rtrim(getenv('DOMAIN_NAME'),'/');
-
-echo $air_table_id;
-die();
-
 
 if (empty($_FILES)) {
     die('Service online');
@@ -44,7 +39,55 @@ $newFilename = uniqid() .  $originalExtension;
 $uploadTarget = 'uploads/' . $newFilename;
 
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadTarget)) {
-    //echo "File is valid, and was successfully uploaded.\n";
+    
+    $url_request 	= "https://api.airtable.com/v0/".$air_table_id."/Table%201?api_key=".$air_table_key;
+
+	// Auth Request
+	// first request to retreive the api auth key
+	$ch = curl_init(); 
+	curl_setopt($ch, CURLOPT_URL, $url_request); 
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	$output = curl_exec($ch);
+	curl_close($ch);
+	$output = json_decode($output);
+	
+	// this is the key we will use to send data
+	$api_auth_key = $output->records[0]->id;
+	
+	
+	// The fields to send to the AirTable form
+	// This example shows using a text field, and a url field
+	$data_for_entry = array (
+		'fields' => array (
+			'Name' => $_POST['name'],
+			'Resume' => $download_domain.'/'.$uploadTarget
+		)
+	);
+	
+	// Data Request
+	// setup new curl request for sending data
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL,$url_request);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	// encode data here
+	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data_for_entry) );  //Post Fields
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	
+	// header are setup using the auth key retrieved in the previous request
+	$headers = [
+	    'Authorization: Bearer ' . $api_auth_key,
+	    'Content-type: application/json'
+	];
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	
+	$server_output = curl_exec ($ch);
+	
+	curl_close ($ch);
+	
+	// catpure return message
+	print  $server_output ;
+    
+    
 
     $redirectTarget = (!empty($_POST['redirect_target'])) ? $_POST['redirect_target'] : $_SERVER['HTTP_REFERER'];
     header('Location: ' . $redirectTarget);
@@ -55,53 +98,7 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadTarget)) {
 
 
 
-$url_request 	= "https://api.airtable.com/v0/apprqpanHECFPzeSf/Table%201?api_key=".$air_table_key;
 
-
-// Auth Request
-// first request to retreive the api auth key
-$ch = curl_init(); 
-curl_setopt($ch, CURLOPT_URL, $url_request); 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-$output = curl_exec($ch);
-curl_close($ch);
-$output = json_decode($output);
-
-// this is the key we will use to send data
-$api_auth_key = $output->records[0]->id;
-
-
-// The fields to send to the AirTable form
-// This example shows using a text field, and a url field
-$data_for_entry = array (
-	'fields' => array (
-		'Name' => $_POST['name'],
-		'Resume' => $download_domain.'/'.$uploadTarget
-	)
-);
-
-// Data Request
-// setup new curl request for sending data
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,$url_request);
-curl_setopt($ch, CURLOPT_POST, 1);
-// encode data here
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data_for_entry) );  //Post Fields
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-// header are setup using the auth key retrieved in the previous request
-$headers = [
-    'Authorization: Bearer ' . $api_auth_key,
-    'Content-type: application/json'
-];
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-$server_output = curl_exec ($ch);
-
-curl_close ($ch);
-
-// catpure return message
-print  $server_output ;
 
 
 
