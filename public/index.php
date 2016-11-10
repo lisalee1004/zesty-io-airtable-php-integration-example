@@ -12,7 +12,6 @@ if (file_exists('../.env')) {
 }
 
 // variables
-
 $air_table_id = getenv('AIRTABLE_TABLE_ID'); 
 $air_table_key 	= getenv('AIRTABLE_API_KEY'); 
 $download_domain 	= rtrim(getenv('DOMAIN_NAME'),'/');
