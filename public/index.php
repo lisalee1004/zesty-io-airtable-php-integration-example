@@ -14,7 +14,10 @@ if (file_exists('../.env')) {
 // variables
 $air_table_id = getenv('AIRTABLE_TABLE_ID'); 
 $air_table_key 	= getenv('AIRTABLE_API_KEY'); 
-$download_domain 	= rtrim(getenv('DOMAIN_NAME'),'/');
+$download_domain 	= $_SERVER['HTTP_HOST'];
+
+echo $download_domain;
+die();
 
 if (empty($_FILES)) {
     die('Service online');
