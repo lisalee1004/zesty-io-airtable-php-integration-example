@@ -1,5 +1,4 @@
 <?php
-
 require('../vendor/autoload.php');
 
 // Log errors (but don't display any publicly)
