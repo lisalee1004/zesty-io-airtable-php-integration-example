@@ -44,9 +44,9 @@ $uploadTarget = 'uploads/' . $newFilename;
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadTarget)) {
     //echo "File is valid, and was successfully uploaded.\n";
 
-        $redirectTarget = (!empty($_POST['redirect_target'])) ? $_POST['redirect_target'] : $_SERVER['HTTP_REFERER'];
-        header('Location: ' . $redirectTarget);
-        die();
+    $redirectTarget = (!empty($_POST['redirect_target'])) ? $_POST['redirect_target'] : $_SERVER['HTTP_REFERER'];
+    header('Location: ' . $redirectTarget);
+    die();
 }
 
 // AIR TABLE REQUESTS
