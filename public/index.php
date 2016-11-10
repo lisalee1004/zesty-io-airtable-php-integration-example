@@ -11,6 +11,7 @@ if (file_exists('../.env')) {
     $dotenv->load();
 }
 
+
 // variables
 $air_table_id = getenv('AIRTABLE_TABLE_ID'); 
 $air_table_key 	= getenv('AIRTABLE_API_KEY'); 
