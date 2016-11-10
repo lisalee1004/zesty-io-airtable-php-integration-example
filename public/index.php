@@ -18,7 +18,6 @@ $https = $_SERVER['HTTPS'] ? 'http://' : 'https://';
 $download_domain 	= $https.$_SERVER['HTTP_HOST'];
 
 echo $download_domain;
-die();
 
 if (empty($_FILES)) {
     die('Service online');
