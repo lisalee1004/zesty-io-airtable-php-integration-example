@@ -24,13 +24,7 @@
 		"AIRTABLE_API_KEY": {
             "description": "Air Table API",
             "value": ""
-        },
-		"DOMAIN_NAME": {
-            "description": "The domain where the files will be stores. Could be your Heroku address. example: https://www.zesty.io",
-            "value": ""
         }
-        
-        
         
     }
 }

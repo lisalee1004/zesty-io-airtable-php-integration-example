@@ -14,7 +14,7 @@ if (file_exists('../.env')) {
 // variables
 $air_table_id = getenv('AIRTABLE_TABLE_ID'); 
 $air_table_key 	= getenv('AIRTABLE_API_KEY'); 
-$download_domain 	= $_SERVER['HTTP_HOST'];
+$download_domain 	= $_SERVER['SERVER_PROTOCOL'].'://'.$_SERVER['HTTP_HOST'];
 
 echo $download_domain;
 die();
