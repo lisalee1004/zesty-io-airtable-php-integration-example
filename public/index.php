@@ -17,6 +17,9 @@ $air_table_id = getenv('AIRTABLE_TABLE_ID');
 $air_table_key 	= getenv('AIRTABLE_API_KEY'); 
 $download_domain 	= rtrim(getenv('DOMAIN_NAME'),'/');
 
+echo $air_table_id;
+die();
+
 
 if (empty($_FILES)) {
     die('Service online');
