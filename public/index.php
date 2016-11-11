@@ -81,7 +81,7 @@ if (move_uploaded_file($_FILES['resume']['tmp_name'], $uploadTarget)) {
 			'Ethnicity' => $_POST['Ethnicity'],
 			'How did you hear about us?' => $_POST['HowHear'],
 			'Other' => $_POST['other'],
-			'Resume' => $download_domain.'/'.$uploadTarget//,
+			'Resume' => $download_domain.'/'.$uploadTarget,
 			'Status' => 'New'
 		)
 	);
