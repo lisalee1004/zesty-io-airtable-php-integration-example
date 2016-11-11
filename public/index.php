@@ -14,11 +14,11 @@ if (file_exists('../.env')) {
 // variables
 $air_table_id = getenv('AIRTABLE_TABLE_ID'); 
 $air_table_key 	= getenv('AIRTABLE_API_KEY');
-$air_table_name 	= getenv('AIRTABLE_NAME'); 
+$air_table_api_version = getenv('AIRTABLE_API_VERSION');
+$air_table_name 	= getenv('AIRTABLE_NAME');
+
 $https = $_SERVER['HTTPS'] ? 'http://' : 'https://';
 $download_domain 	= $https.$_SERVER['HTTP_HOST'];
-
-echo $download_domain;
 
 if (empty($_FILES)) {
     die('Service online');
@@ -44,7 +44,7 @@ $uploadTarget = 'uploads/' . $newFilename;
 
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadTarget)) {
     
-    $url_request 	= "https://api.airtable.com/v0/".$air_table_id."/".$air_table_name."?api_key=".$air_table_key;
+    $url_request 	= "https://api.airtable.com/".$air_table_api_version."/".$air_table_id."/".$air_table_name."?api_key=".$air_table_key;
 
 	// Auth Request
 	// first request to retreive the api auth key
