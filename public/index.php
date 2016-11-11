@@ -41,7 +41,7 @@ $originalExtension = (count(explode('.', $originalFilename)) > 1) ? '.' . array_
 $newFilename = uniqid() .  $originalExtension;
 $uploadTarget = 'uploads/' . $newFilename;
 
-if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadTarget)) {
+if (move_uploaded_file($_FILES['resume']['tmp_name'], $uploadTarget)) {
     
     $url_request 	= "https://api.airtable.com/".$air_table_api_version."/".$air_table_id."/".$air_table_name."?api_key=".$air_table_key;
 
@@ -62,7 +62,23 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadTarget)) {
 	// This example shows using a text field, and a url field
 	$data_for_entry = array (
 		'fields' => array (
-			'Name' => $_POST['name'],
+			'Job Title' => $_POST['JobTitle'],
+			'Job Code' => $_POST['JobCode'],
+			//'Post Date' => $_POST['Date'],
+			'First Name' => $_POST['FirstName'],
+			'Last Name' => $_POST['LastName'],
+			//'Email' => $_POST['Email'],
+			'Phone Number' => $_POST['PhoneNumber'],
+			'Website' => $_POST['Website'],
+			'Address' => $_POST['Address'],
+			'City' => $_POST['City'],
+			//'State' => $_POST['State'],
+			'Zip Code' => $_POST['ZipCode'],
+			'Comments' => $_POST['Comments'],
+			//'Gender' => $_POST['Gender'],
+			//'Ethnicity' => $_POST['Ethnicity'],
+			//'HowHear' => $_POST['HowHear'],
+			'Other' => $_POST['other'],
 			'Resume' => $download_domain.'/'.$uploadTarget
 		)
 	);
