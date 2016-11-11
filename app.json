@@ -25,8 +25,12 @@
             "description": "Air Table API",
             "value": ""
         },
+        "AIRTABLE_API_VERSION": {
+            "description": "Airtable API Version",
+            "value": "v0"
+        },
 		"AIRTABLE_NAME": {
-            "description": "Air Table Name",
+            "description": "Air Table Name (seen in API url)",
             "value": ""
         }
         
