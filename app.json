@@ -24,7 +24,12 @@
 		"AIRTABLE_API_KEY": {
             "description": "Air Table API",
             "value": ""
+        },
+		"AIRTABLE_NAME": {
+            "description": "Air Table Name",
+            "value": ""
         }
+        
         
     }
 }
