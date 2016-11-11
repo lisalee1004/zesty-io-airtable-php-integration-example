@@ -64,7 +64,7 @@ if (move_uploaded_file($_FILES['resume']['tmp_name'], $uploadTarget)) {
 		'fields' => array (
 			'Job Title' => $_POST['JobTitle'],
 			'Job Code' => $_POST['JobCode'],
-			//'Post Date' => date("m/d/Y"),
+			'Post Date' => date("m/d/Y"),
 			'First Name' => $_POST['FirstName'],
 			'Last Name' => $_POST['LastName'],
 			'Email' => $_POST['Email'],
