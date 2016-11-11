@@ -1,6 +1,7 @@
 <?php
 require('../vendor/autoload.php');
 
+
 // Log errors (but don't display any publicly)
 error_reporting(-1);
 ini_set('display_errors', 0);
