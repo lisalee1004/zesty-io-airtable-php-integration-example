@@ -57,6 +57,8 @@ if (move_uploaded_file($_FILES['resume']['tmp_name'], $uploadTarget)) {
 	// this is the key we will use to send data
 	$api_auth_key = $output->records[0]->id;
 	
+	$date=new DateTime(); //this returns the current date time
+	$date_result = $date->format('Y-m-d');
 	
 	// The fields to send to the AirTable form
 	// This example shows using a text field, and a url field
@@ -64,7 +66,7 @@ if (move_uploaded_file($_FILES['resume']['tmp_name'], $uploadTarget)) {
 		'fields' => array (
 			'Job Title' => $_POST['JobTitle'],
 			'Job Code' => $_POST['JobCode'],
-			'Post Date' => date("m/d/Y"),
+			'Post Date' => $date_result,
 			'First Name' => $_POST['FirstName'],
 			'Last Name' => $_POST['LastName'],
 			'Email' => $_POST['Email'],
